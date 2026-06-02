@@ -1,0 +1,25 @@
+name : python-app-ci-cd
+
+on:
+  push:
+    branches: 
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: checkout repository
+      uses: actions/checkout@v2
+
+    -name: build docker image
+      run: |
+        docker build -t python-app:latest .
+
+
+    -name: verify image
+      run: |
+        docker images 
+
+        
